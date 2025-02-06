@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Profile</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #1a1a1a;
+            color: #ffffff;
+            min-height: 100vh;
+        }
+
+        .profile-container {
+            display: flex;
+            padding: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+            gap: 2rem;
+            min-height: 100vh;
+        }
+
+        .profile-photo {
+            flex: 0 0 300px;
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+            padding-top: 2rem;
+        }
+
+        .icon-circle {
+            width: 200px;
+            height: 200px;
+            background-color: #2d2d2d;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border: 3px solid #ff3333;
+            box-shadow: 0 0 20px rgba(255, 51, 51, 0.2);
+        }
+
+        .gender-icon {
+            font-size: 100px;
+            color: #ff3333;
+        }
+
+        .profile-details {
+            flex: 1;
+            background-color: #2d2d2d;
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 0 20px rgba(255, 51, 51, 0.1);
+            display: flex;
+            flex-direction: column;
+        }
+
+        h3 {
+            color: #ff3333;
+            font-size: clamp(1.5rem, 4vw, 2rem);
+            margin-bottom: 1rem;
+        }
+
+        .college {
+            font-size: clamp(1rem, 3vw, 1.2rem);
+            color: #cccccc;
+            margin-bottom: 1.5rem;
+        }
+
+        .extra-info {
+            color: #999999;
+            margin-bottom: 2rem;
+            font-size: clamp(0.9rem, 2.5vw, 1rem);
+        }
+
+        .projects-section {
+            margin-top: auto;
+            padding-top: 2rem;
+        }
+
+        .projects-section h4 {
+            color: #ff3333;
+            margin-bottom: 1rem;
+            font-size: clamp(1.2rem, 3.5vw, 1.5rem);
+        }
+
+        .project-item {
+            background-color: #383838;
+            padding: 1rem;
+            margin-bottom: 1rem;
+            border-radius: 5px;
+            color: #cccccc;
+        }
+
+        .social-links {
+            margin-top: 2rem;
+            display: flex;
+            gap: 1.5rem;
+        }
+
+        .social-links a {
+            color: #ffffff;
+            font-size: 1.5rem;
+            transition: all 0.3s ease;
+            width: 50px;
+            height: 50px;
+            background-color: #383838;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .social-links a:hover {
+            color: #ff3333;
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(255, 51, 51, 0.2);
+        }
+
+        @media (max-width: 968px) {
+            .profile-container {
+                padding: 1rem;
+                gap: 1.5rem;
+            }
+
+            .icon-circle {
+                width: 150px;
+                height: 150px;
+            }
+
+            .gender-icon {
+                font-size: 75px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .profile-container {
+                flex-direction: column;
+            }
+
+            .profile-photo {
+                flex: none;
+            }
+
+            .icon-circle {
+                width: 120px;
+                height: 120px;
+            }
+
+            .gender-icon {
+                font-size: 60px;
+            }
+
+            .profile-details {
+                padding: 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="profile-container">
+        <div class="profile-photo">
+            <div class="icon-circle">
+                <div id="gender-icon" class="gender-icon"></div>
+            </div>
+        </div>
+        <div class="profile-details">
+            <h3 id="profile-name"></h3>
+            <p id="profile-college" class="college"></p>
+            <p id="profile-extra-info" class="extra-info"></p>
+            
+            <div class="projects-section">
+                <h4>Projects</h4>
+                <div id="projects-list"></div>
+            </div>
+
+            <div class="social-links">
+                <a href="#" id="instagram-link" target="_blank"><i class="fab fa-instagram"></i></a>
+                <a href="#" id="linkedin-link" target="_blank"><i class="fab fa-linkedin"></i></a>
+            </div>
+        </div>
+    </div>
+    <script>
+        const teamMembers = [
+            {
+                name: "Vaibhav Rajai",
+                college: "Thadomal Shahani Engineering College",
+                extraInfo: "MERN Stack Developer",
+                instagram: "https://www.instagram.com/rajai_vaibhav_11/",
+                linkedin: "https://www.linkedin.com/in/vaibhav-rajai-b957a2283?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app",
+                projects: ["Mental Health App", "To Do List", "Quiz App","XML Parser"]
+            },
+            {
+                name: "Monishka Jethani",
+                college: "SVKM Dwrakadas J. Sanghvi College",
+                extraInfo: "UI/UX Developer",
+                instagram: "https://www.instagram.com/monishkajethani/",
+                linkedin: "https://www.linkedin.com/search/results/all/?fetchDeterministicClustersOnly=true&heroEntityKey=urn%3Ali%3Afsd_profile%3AACoAAEJlXmcB8ui9GuQIddnK4NH5LjqwrZ2M7Yc&keywords=monishka%20jethani&origin=RICH_QUERY_SUGGESTION&position=0&searchId=d35b85fb-596f-481a-b679-f96b13d7b205&sid=bsc",
+                projects: ["Mental Health App", "Tours and Travels","QR Attend System","To Do List"]
+            },
+            {
+                name: "Anish Dharnidhar",
+                college: "Thadomal Shahani Engineering Colleg",
+                extraInfo: "Backend Developer",
+                instagram: "https://www.instagram.com/anishdharnidhar_07/",
+                linkedin: "https://www.linkedin.com/in/anish-dharnidhar/",
+                projects: ["Mental Health App", "Python File Transfer", "XML Parser","University Website"]
+            }
+        ];
+
+        function getQueryParams() {
+            const urlParams = new URLSearchParams(window.location.search);
+            return {
+                id: parseInt(urlParams.get('id')) || 0
+            };
+        }
+
+        function displayProfile() {
+            const params = getQueryParams();
+            const member = teamMembers[params.id];
+            
+            if (member) {
+                const genderIcon = document.getElementById('gender-icon');
+                genderIcon.innerHTML = params.id === 1 ? 
+                    '<i class="fas fa-female"></i>' : 
+                    '<i class="fas fa-male"></i>';
+                document.getElementById('profile-name').textContent = member.name;
+                document.getElementById('profile-college').textContent = member.college;
+                document.getElementById('profile-extra-info').textContent = member.extraInfo;
+                document.getElementById('instagram-link').href = member.instagram;
+                document.getElementById('linkedin-link').href = member.linkedin;
+                const projectsList = document.getElementById('projects-list');
+                projectsList.innerHTML = member.projects.map(project => 
+                    `<div class="project-item">${project}</div>`
+                ).join('');
+            } else {
+                console.error("Invalid member id");
+            }
+        }
+
+        displayProfile();
+    </script>
+</body>
+</html>

@@ -263,30 +263,39 @@
         <h2>About Us</h2>
         <p>We are a passionate team of developers and designers committed to transforming innovative ideas into powerful digital solutions.</p>
         <div class="team-grid">
-            <a href="https://www.linkedin.com/in/vaibhav-rajai-b957a2283?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app">
                 <div class="team-member">
                     <i class="fas fa-male fa-3x" style="color: red;"></i>
                     <h3>Vaibhav Rajai</h3>
                     <p>MERN Stack Developer</p>
-                    <button>Connect</button>
+                    <button onclick="handleProfile(0)">
+                        <i class="fas fa-search"></i> Know More
+                    </button>
+                    <button onclick="handleLinkedin(0)">
+                        <i class="fas fa-plus"></i> Connect
+                    </button>
                 </div>
-            </a>
-            <a href="https://www.linkedin.com/search/results/all/?fetchDeterministicClustersOnly=true&heroEntityKey=urn%3Ali%3Afsd_profile%3AACoAAEJlXmcB8ui9GuQIddnK4NH5LjqwrZ2M7Yc&keywords=monishka%20jethani&origin=RICH_QUERY_SUGGESTION&position=0&searchId=d35b85fb-596f-481a-b679-f96b13d7b205&sid=bsc">
                 <div class="team-member">
                     <i class="fas fa-female fa-3x" style="color: red;"></i>
                     <h3>Monishka Jethani</h3>
                     <p>UI/UX Developer</p>
-                    <button>Connect</button>
+                    <button onclick="handleProfile(1)">
+                        <i class="fas fa-search"></i> Know More
+                    </button  >
+                    <button onclick="handleLinkedin(1)">
+                        <i class="fas fa-plus"></i> Connect
+                    </button>
                 </div>
-            </a>
-            <a href="https://www.linkedin.com/in/anish-dharnidhar/">
                 <div class="team-member">
                     <i class="fas fa-male fa-3x" style="color: red;"></i>
                     <h3>Anish Dharnidhar</h3>
                     <p>Backend Developer</p>
-                    <button>Connect</button>
+                    <button onclick="handleProfile(2)">
+                        <i class="fas fa-search"></i> Know More
+                    </button>
+                    <button  onclick="handleLinkedin(2)">
+                        <i class="fas fa-plus"></i> Connect
+                    </button>
                 </div>
-            </a>
         </div>
     </section>
     <section id="projects">
@@ -312,6 +321,17 @@
         </div>
     </section>
     <script>
+        function handleLinkedin(id){
+            links=["https://www.linkedin.com/in/vaibhav-rajai-b957a2283?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app","https://www.linkedin.com/search/results/all/?fetchDeterministicClustersOnly=true&heroEntityKey=urn%3Ali%3Afsd_profile%3AACoAAEJlXmcB8ui9GuQIddnK4NH5LjqwrZ2M7Yc&keywords=monishka%20jethani&origin=RICH_QUERY_SUGGESTION&position=0&searchId=d35b85fb-596f-481a-b679-f96b13d7b205&sid=bsc","https://www.linkedin.com/in/anish-dharnidhar/"]
+            switch(id){
+                case 0: window.location.href=links[id]; break;
+                case 1: window.location.href=links[id]; break;
+                case 2: window.location.href=links[id]; break;
+            }
+        }
+        function handleProfile(id){
+            window.location.href=`profile.html?id=${id}`;
+        }
         function toggle() {
             const navLinks = document.getElementById('nav-links');
             navLinks.classList.toggle('active');
